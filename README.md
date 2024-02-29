@@ -82,13 +82,21 @@
     -------
        500
     (1 row)
-
+    ```
+    ```
     postgres=# select count(*) from staff;
      count
     -------
       1500
     (1 row)
     ```
+
+    > **NOTE:**
+    > Reproducability is very important for debugging large industrial code bases.
+    > It is therefore standard practice in industry to version control test databases like this.
+    > A common complaint from industry about newly graduated data science students is that they don't know how to version control data.
+    > One of the purposes of this assignment is to familiarize you with this concept.
+
 
 1. Complete the test cases in the same way that you did for the [pagila-hw](https://github.com/mikeizbicki/pagila-hw) assignment.
 
