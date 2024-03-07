@@ -45,4 +45,5 @@ WHERE
 GROUP BY
     film.film_id, film.title
 HAVING
-    COUNT(DISTINCT r1.customer_id) >= 3;
+    COUNT(DISTINCT r1.customer_id) >= 3
+order by title;

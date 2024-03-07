@@ -19,4 +19,5 @@ join (
 ) AS subquery on c.customer_id = subquery.customer_id
 WHERE row_num <= 5 AND action_count >= 4
 GROUP BY c.customer_id, c.first_name, c.last_name
-HAVING COUNT(*) = 5;
+HAVING COUNT(*) = 5
+order by c.customer_id;
