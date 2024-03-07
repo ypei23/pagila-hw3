@@ -11,3 +11,34 @@
  * All of the subsequent problems in this homework can be solved with LATERAL JOINs
  * (or slightly less conveniently with subqueries).
  */
+
+SELECT
+    c.first_name,
+    c.last_name,
+    m.title,
+    MAX(r.rental_date) as rental_date
+FROM
+    customer c
+JOIN
+    rental r ON c.customer_id = r.customer_id
+JOIN
+    inventory i ON r.inventory_id = i.inventory_id
+JOIN
+    film m ON i.film_id = m.film_id
+WHERE
+    (r.customer_id, r.rental_date) IN (
+        SELECT
+            customer_id,
+            MAX(rental_date) AS rental_date
+        FROM
+            rental
+        GROUP BY
+            customer_id
+    )
+GROUP BY
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    m.title
+ORDER BY
+    c.last_name, c.first_name;
